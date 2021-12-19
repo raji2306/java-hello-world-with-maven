@@ -32,6 +32,7 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
 
+		    
 			
                 <executions>
                     <execution>
@@ -51,6 +52,14 @@
                 </executions>
 	   
             </plugin>
+	   <plugin>
+		 <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat-mav</artifactId>
+                <version>2.2</version>
+		 <configuration>
+			 <port>8080></port>
+		</configuration> 
+	</plugin>
         </plugins>
     </build>
 </project>
