@@ -22,5 +22,10 @@ pipeline {
                }
             }
         }
+        stage("Running Ansible Playbook"){
+            steps{
+                ansiblePlaybook credentialsId: 'ansible-play', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: '/etc/ansible/tomcat.yaml'
+            }    
+        }
     }
 }
