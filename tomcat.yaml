@@ -1,0 +1,77 @@
+- hosts : all
+  remote_user : ec2-user
+  become : yes
+  vars :
+    port : 8085
+  tasks :
+  - name : Updating the packages
+    yum :
+      name : '*'
+      state : present
+  - name : Installing the Java
+    yum : 
+      name : "{{item}}"
+      state : present
+    ignore_errors : yes
+    loop :
+      - git 
+      - java-1.8.0-openjdk-devel
+  - name : Creating a directory
+    file :
+      path : /opt/tomcat
+      state : directory
+  - name : Downloding Tomcat 
+    get_url :
+      url : https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
+      dest : /opt/tomcat/ 
+  - name : Unarchive the Downloaded Tomcat File
+    unarchive :
+      src : /opt/tomcat/apache-tomcat-9.0.64.tar.gz 
+      dest : /opt/tomcat/
+      mode: '777'
+      remote_src : yes
+  - name : Deleting Valve and Manager from Context.xml under manager
+    replace :
+      path : /opt/tomcat/apache-tomcat-9.0.64/webapps/manager/META-INF/context.xml
+      regexp : (<Valve)(.|\s)*(HashMap"\/>)
+      replace : ''
+  - name : Deleting Valve and Manager from Context.xml under host-manager
+    replace :
+      path : /opt/tomcat/apache-tomcat-9.0.64/webapps/host-manager/META-INF/context.xml
+      regexp : (<Valve)(.|\s)*(HashMap"\/>)
+      replace : ''
+  - name : Adding User's to Tomcat-folder 
+    blockinfile :
+      path : /opt/tomcat/apache-tomcat-9.0.64/conf/tomcat-users.xml
+      insertafter : (version="1.0">)
+      block : |
+          <role rolename="manager-gui"/>
+          <role rolename="manager-script"/>
+          <role rolename="manager-jmx"/>
+          <role rolename="manager-status"/>
+          <user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
+          <user username="deployer" password="deployer" roles="manager-script"/>
+  - name : Creating multiple directories ( ignore this part)
+    file : 
+      path : "{{ item }}"
+      state : directory
+    loop :
+      - /home/ec2-user/preethi
+      - /home/ec2-user/raj.html
+  - name : Changing the Tomcat-port 
+    lineinfile :  
+      path : /opt/tomcat/apache-tomcat-9.0.64/conf/server.xml
+      regexp : (    <Connector port="8080" protocol="HTTP\/1.1") 
+      line :  <Connector port="{{port}}" protocol="HTTP/1.1"
+  - name : Starting the Tomcat-Server
+    shell : nohup /opt/tomcat/apache-tomcat-9.0.64/bin/startup.sh &
+  - name : Inserting the War File
+    get_url :
+      url : https://tomcat.apache.org/tomcat-5.5-doc/appdev/sample/sample.war
+      dest : /opt/tomcat/apache-tomcat-9.0.64/webapps/
+
+
+
+  
+
+
