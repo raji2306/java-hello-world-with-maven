@@ -1,0 +1,62 @@
+version : "3.7"
+services :
+  httpd-app :
+    image : httpd
+    ports :
+      - "88:80"
+    volumes :
+      - preethi:/usr/local/apache2/htdocs
+    deploy :
+      resources : 
+        limits : 
+          memory : 1000m
+  application :
+    image : learnitguide/knotejs:1.0
+    ports :
+    - "92:3000"
+    environment :
+      MONGO_URL : mongodb://mongo-container:27017
+    depends_on :
+    - mongo-container
+    networks : 
+    - mongoappnetwork
+    volumes :
+    - rajima:/preethi
+  mongo-container :
+    image : mongo
+    ports :
+    - "27017:27017"
+    restart : always
+    networks : 
+    - mongoappnetwork
+  mongoexpress-container :
+    image : mongo-express
+    ports :
+    - "8081:8081"
+    environment :
+      ME_CONFIG_MONGODB_SERVER: mongo-container
+    restart : always
+    networks : 
+    - mongoappnetwork
+  application2 :
+    image : application2-images
+    build : . 
+    environment :
+     - "99:80"
+    restart : always
+    depends_on :
+    - mysql-contain
+    networks : 
+    - mongoappnetwork
+  mysql-contain :
+    image : mysql 
+    restart : always
+    environment :
+       MYSQL_ROOT_PASSWORD : raji2306   
+    networks : 
+    - mongoappnetwork
+networks : 
+  mongoappnetwork :
+volumes : 
+  preethi :
+  rajima :
