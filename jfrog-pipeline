@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven'
+        jdk 'java'
+    }
+    stages{
+       stage("GitHub Checkout Stage"){
+          steps{
+               git credentialsId:'Git-ssh', url: 'git@github.com:raji2306/java-hello-world-with-maven.git'
+          }
+        }
+        stage("Maven Build Stage"){
+            steps{
+                sh 'mvn clean install'
+            }
+          }
+	stage ('Server'){
+            steps {
+               rtServer (
+                 id: "jfrog",
+                 url: 'http://13.126.222.71:8081/artifactory',
+                 credentialsId: 'jfrog',
+                 timeout: 300
+                )
+            }
+        }
+        stage('Upload'){
+            steps{
+                rtUpload (
+                 serverId:"jfrog" ,
+                  spec: '''{
+                   "files": [
+                      {
+                      "pattern": "./*.war",
+                      "target": "rajesh-repo"
+                      }
+                    ]
+                   }''',
+                )
+            }
+        }
+        stage ('Publish build info') {
+            steps {
+                rtPublishBuildInfo (
+                    serverId: "jfrog"
+                )
+            }
+        }
+        stage("Download from Repo") {
+            steps{
+                rtDownload (
+                    serverId: 'jfrog',
+                    spec: '''{
+                          "files": [
+                            {
+                              "pattern": "*-SNAPSHOT.war",
+                              "target": "bazinga/"
+                            }
+                      ]
+                } '''
+              )
+            }
+        }
+    }
+}
