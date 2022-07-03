@@ -14,7 +14,7 @@ pipeline {
         }
     stage('Building compose') {
       steps{
-           sh docker-compose -f dockerfinalcopy.yaml up -d
+           sh "docker-compose -f dockerfinalcopy.yaml up -d"
       }
     }
     stage('Deploy Image') {
