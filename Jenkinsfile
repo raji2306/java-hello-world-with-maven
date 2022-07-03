@@ -27,6 +27,11 @@ pipeline {
         }
       }
     }
+    stage('Running the container') {
+      steps{
+        sh "docker run -itd --name jenkinsdockercontainer -p 85:80 $registry:$BUILD_NUMBER"
+      }
+    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
