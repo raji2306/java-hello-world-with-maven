@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+        registry = "raji2306/jenkinsdockerimage"
+        registryCredential = "dockerhub"
+        dockerImage=''
+    }
     agent any
     tools {
         maven 'maven'
@@ -13,6 +18,27 @@ pipeline {
         stage("Maven Build Stage"){
             steps{
                 sh 'mvn clean install'
+            }
+        }
+        stage("Pushing into the Docker Hub"){
+            steps{
+                script{
+                    docker.withRegistry('',registryCredential ){
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage ("Running an Docker Container"){
+            steps{
+                script {
+                    docker run -itd 
+                }
+            }
+        }
+        stage ("Removing unused docker image"){
+            steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
         stage("Deploy to Tomcat Server"){
