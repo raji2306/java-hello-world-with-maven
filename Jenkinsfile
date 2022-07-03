@@ -36,11 +36,11 @@ pipeline {
                 }
             }
         }
-        stage ("Removing unused docker image"){
-            steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
-            }
-        }
+//         stage ("Removing unused docker image"){
+//             steps{
+//                 sh "docker rmi $registry:$BUILD_NUMBER"
+//             }
+//         }
 //         stage("Deploy to Tomcat Server"){
 //             steps{
 //                 script{
