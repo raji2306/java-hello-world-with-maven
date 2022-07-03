@@ -20,6 +20,13 @@ pipeline {
 //                 sh 'mvn clean install'
 //             }
 //         }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
         stage("Pushing into the Docker Hub"){
             steps{
                 script{
