@@ -6,7 +6,7 @@
     <groupId>org.springframework</groupId>
     <artifactId>jb-hello-world-maven</artifactId>
     <packaging>war</packaging>
-    <version>0.1.-SNAPSHOT</version>
+    <version>1.2.6-beta-01-SNAPSHOT</version>
 	
 
 
