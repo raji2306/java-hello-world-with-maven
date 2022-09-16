@@ -1,3 +1,4 @@
+#Building Java app with Maven
 name: Java CI with Maven
 
 on:
