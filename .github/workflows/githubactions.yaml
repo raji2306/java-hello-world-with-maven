@@ -9,14 +9,18 @@ on:
 jobs:
   Maven-java-Build:
 
-    runs-on: ubuntu-latest
+    runs-on : ubuntu-latest
 
+    defaults:
+      run:
+      working-directory: client
+ 
     outputs:
       output1: ${{ steps.Install_git.outputs.test }}
 
     strategy :
       matrix :
-        version : [1.8, 1.7]
+        version : [1.8]
     
     steps:
     - name : Giving permission to our Repository
@@ -36,7 +40,6 @@ jobs:
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
 
-
     - name: Cache local Maven repository
       uses: actions/cache@v2
       with:
@@ -50,14 +53,11 @@ jobs:
       with:
         name: myArtifacts
         path: client
-        retention-days: 1
+        # retention-days: 1
         
   Building-and-Pushing-an-Docker-Image:
   
       runs-on : ubuntu-latest
-      defaults:
-       run:
-        working-directory: client
       steps :
         - name: docker-upload
           uses: mr-smithers-excellent/docker-build-push@v4
