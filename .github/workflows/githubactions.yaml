@@ -59,11 +59,10 @@ jobs:
       runs-on : ubuntu-latest
       steps :
         - name: docker-upload
-          uses: mr-smithers-excellent/docker-build-push@v4
+          uses: mr-smithers-excellent/docker-build-push@v5
           with:
            image: raji2306/demo-app01
            registry: docker.io
-           dockerfile: Dockerfile
            username: ${{ secrets.DOCKER_USERNAME }}
            password: ${{ secrets.DOCKER_PASSWORD }}
         - name: echo_da
