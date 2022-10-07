@@ -52,7 +52,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: myArtifacts
-        path: client
+        path: ./client
         # retention-days: 1
         
   Building-and-Pushing-an-Docker-Image:
@@ -62,7 +62,7 @@ jobs:
         - name: docker-upload
           uses: mr-smithers-excellent/docker-build-push@v4
           with:
-           image: raji2306/demo-app
+           image: raji2306/demo-app01
            registry: docker.io
            username: ${{ secrets.DOCKER_USERNAME }}
            password: ${{ secrets.DOCKER_PASSWORD }}
