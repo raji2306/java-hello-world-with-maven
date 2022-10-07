@@ -34,7 +34,6 @@ jobs:
     - name: Install_git
       run: |
         sudo apt-get install -y git 
-        sudo mkdir client
         echo "::set-output name=test::git --version"
 
     - name: Build project with Maven
@@ -64,6 +63,7 @@ jobs:
           with:
            image: raji2306/demo-app01
            registry: docker.io
+           dockerfile: Dockerfile
            username: ${{ secrets.DOCKER_USERNAME }}
            password: ${{ secrets.DOCKER_PASSWORD }}
         - name: echo_da
