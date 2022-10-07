@@ -11,9 +11,9 @@ jobs:
 
     runs-on : ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: client
+    # defaults:
+    #   run:
+    #   working-directory: client
  
     outputs:
       output1: ${{ steps.Install_git.outputs.test }}
