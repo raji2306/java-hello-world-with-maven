@@ -56,7 +56,7 @@ jobs:
         
   Building-and-Pushing-an-Docker-Image:
   
-      runs-on : ubuntu-latest
+      runs-on : self-hosted
       steps :
         - name : Giving permission to our Repository
           uses: actions/checkout@v2
