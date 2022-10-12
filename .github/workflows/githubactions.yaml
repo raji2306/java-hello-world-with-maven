@@ -56,22 +56,22 @@ jobs:
     
     - name: Create dir
       run: |
-        mkdir mydirname
+        mkdir -p /opt/mydirname
         
-  Building-and-Pushing-an-Docker-Image:
+#   Building-and-Pushing-an-Docker-Image:
   
-      runs-on : self-hosted
-      steps :
-        - name : Giving permission to our Repository
-          uses: actions/checkout@v2
+#       runs-on : self-hosted
+#       steps :
+#         - name : Giving permission to our Repository
+#           uses: actions/checkout@v2
           
-        - name: docker-upload
-          uses: mr-smithers-excellent/docker-build-push@v5
-          with:
-           image: raji2306/demo-app01
-           registry: docker.io
-           username: ${{ secrets.DOCKER_USERNAME }}
-           password: ${{ secrets.DOCKER_PASSWORD }}
+#         - name: docker-upload
+#           uses: mr-smithers-excellent/docker-build-push@v5
+#           with:
+#            image: raji2306/demo-app01
+#            registry: docker.io
+#            username: ${{ secrets.DOCKER_USERNAME }}
+#            password: ${{ secrets.DOCKER_PASSWORD }}
            
-        - name: echo_da
-          run: echo ${{needs.Maven-java-Build.outputs.output1}} 
+#         - name: echo_da
+#           run: echo ${{needs.Maven-java-Build.outputs.output1}} 
