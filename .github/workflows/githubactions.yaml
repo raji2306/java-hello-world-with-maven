@@ -54,9 +54,9 @@ jobs:
         path : ./target/
         # retention-days: 1
     
-    - name: Create folder 
+    - name: Create dir
       run: |
-            mkdir -p myNewFolder
+        mkdir mydirname
         
   Building-and-Pushing-an-Docker-Image:
   
