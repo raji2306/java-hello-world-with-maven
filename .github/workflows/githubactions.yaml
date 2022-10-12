@@ -56,7 +56,7 @@ jobs:
     
     - name: Create dir
       run: |
-        mkdir -p /opt/mydirname
+        sudo mkdir -p /opt/mydirname
         
 #   Building-and-Pushing-an-Docker-Image:
   
