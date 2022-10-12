@@ -53,6 +53,10 @@ jobs:
         name: myArtifacts
         path : ./target/
         # retention-days: 1
+    
+    - name : Creating-folder
+      run : |
+          mkdir myfile
         
   Building-and-Pushing-an-Docker-Image:
   
