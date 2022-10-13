@@ -57,6 +57,11 @@ jobs:
     - name: Create dir
       run: |
         sudo mkdir -p /opt/mydirname
+
+    - name: Run build script
+      run: ./.github/myfile.sh
+      shell: bash
+
         
 #   Building-and-Pushing-an-Docker-Image:
   
