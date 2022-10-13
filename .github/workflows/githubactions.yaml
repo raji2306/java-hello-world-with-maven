@@ -69,7 +69,7 @@ jobs:
         sudo cp ./.github/workflows/myfile.sh ./.github/myfile.sh
         
     - name: Run build script
-      run: ./.github/myfile.sh
+      run: sudo ./.github/myfile.sh
       shell: bash
 
         
