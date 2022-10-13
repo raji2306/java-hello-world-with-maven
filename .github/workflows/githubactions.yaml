@@ -58,11 +58,15 @@ jobs:
       run: |
         sudo mkdir -p /opt/mydirname
         
+#     - name: Copy files from repo to Runner
+#       uses: canastro/copy-file-action@master
+#       with:
+#         source: ".github/workflows/myfile.sh"
+#         target: "./.github/myfile.sh"
+
     - name: Copy files from repo to Runner
-      uses: canastro/copy-file-action@master
-      with:
-        source: ".github/workflows/myfile.sh"
-        target: "./.github/myfile.sh"
+      run: |
+        sudo cp ./.github/workflows/myfile.sh ./.github/myfile.sh
         
     - name: Run build script
       run: ./.github/myfile.sh
