@@ -67,6 +67,7 @@ jobs:
     - name: Copy files from repo to Runner
       run: |
         sudo cp ./.github/workflows/myfile.sh ./.github/myfile.sh
+        sudo chmod +x ./.github/myfile.sh
         
     - name: Run build script
       run: sudo ./.github/myfile.sh
