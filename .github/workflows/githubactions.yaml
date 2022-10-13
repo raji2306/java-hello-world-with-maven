@@ -57,7 +57,13 @@ jobs:
     - name: Create dir
       run: |
         sudo mkdir -p /opt/mydirname
-
+        
+    - name: Copy files from repo to Runner
+      uses: canastro/copy-file-action@master
+      with:
+        source: ".github/workflows/myfile.sh"
+        target: "./.github/myfile.sh"
+        
     - name: Run build script
       run: ./.github/myfile.sh
       shell: bash
