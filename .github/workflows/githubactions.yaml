@@ -54,7 +54,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: myArtifacts
-        path : ./home/ubuntu/workdirectory
+        path : /home/ubuntu/actions-runner/home/ubuntu/workdirectory/java-hello-world-with-maven/java-hello-world-with-maven/target
         # retention-days: 1
     
     - name: Create dir
