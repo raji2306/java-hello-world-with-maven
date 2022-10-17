@@ -76,7 +76,16 @@ jobs:
       run: sudo ./.github/myfile.sh
       shell: bash
 
-        
+
+    - name: Copy single file to remote
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: client/myfile
+          remote: /home/ubuntu/
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+          
 #   Building-and-Pushing-an-Docker-Image:
   
 #       runs-on : self-hosted
