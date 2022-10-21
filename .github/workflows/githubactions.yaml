@@ -116,5 +116,6 @@ jobs:
 
     needs: Maven-java-Build
     steps:
-      - run: echo ${{needs.Maven-java-Build.outputs.output1}} 
+      - name : Displayin Git Value
+        run: echo ${{needs.Maven-java-Build.outputs.output1}} 
 
