@@ -44,7 +44,7 @@ jobs:
       id : contents
       run: |
         sudo apt-get install -y git 
-        echo "::set-output name=test::Install_git"
+        echo "::set-output name=test::git --version"
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
