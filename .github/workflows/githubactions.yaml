@@ -47,8 +47,9 @@ jobs:
 
     - name: Check_Git
       run: |
-           echo git --version >> out.txt
-           echo "GitVersion=$(cat out.txt)" >> $GITHUB_OUTPUT
+           git --version >> out.txt
+           content=$( out.txt )
+           echo "GitVersion=content" >> $GITHUB_OUTPUT
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
