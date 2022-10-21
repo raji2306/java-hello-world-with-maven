@@ -17,7 +17,7 @@ jobs:
     #   working-directory: client
  
     outputs:
-      output1: ${{ steps.Check_Git.outputs.GitVersion }}
+      output1: ${{ steps.Install_git.outputs.test }}
 
     strategy :
       matrix :
@@ -44,12 +44,6 @@ jobs:
       run: |
         sudo apt-get install -y git 
         echo "::set-output name=test::git --version"
-
-    - name: Check_Git
-      run: |
-           git --version >> out.txt
-           content=$( out.txt )
-           echo "GitVersion=content" >> $GITHUB_OUTPUT
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
