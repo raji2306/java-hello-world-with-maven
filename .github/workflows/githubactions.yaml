@@ -17,7 +17,7 @@ jobs:
     #   working-directory: client
  
     outputs:
-      output1: ${{ steps.Install_git.outputs.test }}
+      output1: ${{ steps.Check_Git.outputs.GitVersion }}
 
     strategy :
       matrix :
@@ -44,6 +44,9 @@ jobs:
       run: |
         sudo apt-get install -y git 
         echo "::set-output name=test::git --version"
+
+    - name: Check_Git
+      run: echo "GitVersion=git --version" >> $GITHUB_OUTPUT
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
@@ -79,7 +82,7 @@ jobs:
         sudo cp ./.github/workflows/myfile.sh ./.github/myfile.sh
         sudo chmod +x ./.github/myfile.sh
         
-    - name: Run build script
+    - name: Run build script 
       run: sudo ./.github/myfile.sh
       shell: bash
     
@@ -106,11 +109,11 @@ jobs:
 # Testing 1 2 skip test
 
 
-#   SSH-COPY:
+  Output:
 
-#     runs-on : my-runner
-    
-#     steps:
-#     - name : Giving permission to our Repository
-#       uses: actions/checkout@v2
+    runs-on : self-hosted
+
+    needs: Maven-java-Build
+    steps:
+      - run: echo ${{needs.Maven-java-Build.outputs.output1}} 
 
