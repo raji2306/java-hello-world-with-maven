@@ -44,7 +44,10 @@ jobs:
       id : contents
       run: |
         sudo apt-get install -y git 
-        echo "::set-output name=test::git --version"
+        git --version > mytouch.txt
+        conten=$( cat mytouch.txt ) 
+        echo "::set-output name=test::$conten"
+        echo "::set-output name=test1::git --version"
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
