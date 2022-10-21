@@ -84,7 +84,7 @@ jobs:
       shell: bash
     
     - name: copy file via ssh password
-      run : sudo sshpass -p '${{ secrets.PASSWORD }}' ssh ~/myfile.txt root@3.110.104.77:/root    
+      run : sudo sshpass -p '${{ secrets.PASSWORD }}' ssh /toot/myfile.txt root@3.110.104.77:/root    
 
 #   Building-and-Pushing-an-Docker-Image:
   
