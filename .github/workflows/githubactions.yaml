@@ -46,7 +46,9 @@ jobs:
         echo "::set-output name=test::git --version"
 
     - name: Check_Git
-      run: echo "GitVersion=git --version" >> $GITHUB_OUTPUT
+      run: |
+           echo git --version >> out.txt
+           echo "GitVersion=$(cat out.txt)" >> $GITHUB_OUTPUT
 
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
@@ -86,8 +88,8 @@ jobs:
       run: sudo ./.github/myfile.sh
       shell: bash
     
-    - name: copy file via ssh password
-      run : sudo sshpass -p '${{ secrets.PASSWORD }}' scp /root/myfile.txt root@3.110.104.77:/root    
+#     - name: copy file via ssh password
+#       run : sudo sshpass -p '${{ secrets.PASSWORD }}' scp /root/myfile.txt root@3.110.104.77:/root    
 
 #   Building-and-Pushing-an-Docker-Image:
   
