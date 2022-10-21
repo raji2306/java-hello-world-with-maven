@@ -84,15 +84,7 @@ jobs:
       shell: bash
     
     - name: copy file via ssh password
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: "~/myfile.txt"
-        target: "myfile.txt"
-      
+      run : sudo sshpass -p '${{ secrets.PASSWORD }}' ssh ~/myfile.txt root@3.110.104.77:/root    
 
 #   Building-and-Pushing-an-Docker-Image:
   
@@ -121,13 +113,4 @@ jobs:
 #     steps:
 #     - name : Giving permission to our Repository
 #       uses: actions/checkout@v2
-
-#     - name: Copy folder content recursively to remote
-#       uses: garygrossgarten/github-action-scp@release
-#       with:
-#           local: client/myfile
-#           remote: myfile
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USER }}
-#           password: ${{ secrets.PASSWORD }}
 
