@@ -17,7 +17,7 @@ jobs:
     #   working-directory: client
  
     outputs:
-      output1: ${{ steps.Install_git.outputs.test }}
+      output1: ${{ steps.contents.outputs.test }}
 
     strategy :
       matrix :
@@ -41,6 +41,7 @@ jobs:
       run: mvn -version
 
     - name: Install_git
+      id : contents
       run: |
         sudo apt-get install -y git 
         echo "::set-output name=test::Install_git"
