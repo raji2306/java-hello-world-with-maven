@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: myArtifacts
-        path : /home/ubuntu/actions-runner/home/ubuntu/workdirectory/java-hello-world-with-maven/java-hello-world-with-maven/target
+        path : /home/ubuntu/actions-runner/~/testingfile/java-hello-world-with-maven/java-hello-world-with-maven/target
         # retention-days: 1
     
     - name: Create dir
@@ -84,7 +84,7 @@ jobs:
       shell: bash
     
     - name: copy file via ssh password
-      run : sudo sshpass -p '${{ secrets.PASSWORD }}' ssh "/root/myfile.txt" root@3.110.104.77:/root    
+      run : sudo sshpass -p '${{ secrets.PASSWORD }}' scp /root/myfile.txt root@3.110.104.77:/root    
 
 #   Building-and-Pushing-an-Docker-Image:
   
