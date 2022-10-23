@@ -98,7 +98,7 @@ jobs:
       with :
         image : resuableimage
         userid : raji2306
-        tag : ${{ GITHUB_RUN_NUMBER }}
+        tag : $GITHUB_RUN_NUMBER
       secrets :
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
