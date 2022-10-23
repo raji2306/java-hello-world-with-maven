@@ -92,16 +92,16 @@ jobs:
       - name : Displayin Git Value
         run: echo ${{needs.Maven-java-Build.outputs.output1}} 
         
-  Resuable-Workflow:
+#   Resuable-Workflow:
   
-      uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
-      with :
-        image : resuableimage
+#       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
+#       with :
+#         image : resuableimage
 #         userid : raji2306
 #         tag : 23
-      secrets :
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
+#       secrets :
+#         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
       
       
       
