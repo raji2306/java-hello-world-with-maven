@@ -94,7 +94,7 @@ jobs:
         
   Resuable-Workflow:
   
-      uses : raji2306/Thoughtworks-mediawikiApplcation/.github/resuableworkflows/resuable.yaml@master
+      uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
       with :
         image : resuableimage
         userid : raji2306
