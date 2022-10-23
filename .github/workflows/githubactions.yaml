@@ -97,8 +97,8 @@ jobs:
       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
       with :
         image : resuableimage
-        userid : raji2306
-        tag : $GITHUB_RUN_NUMBER
+#         userid : raji2306
+        tag : 23.0
       secrets :
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
