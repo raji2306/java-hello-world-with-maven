@@ -100,8 +100,8 @@ jobs:
 #         userid : raji2306
         tag : 23.0
       secrets :
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }} 
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
       
       
       
