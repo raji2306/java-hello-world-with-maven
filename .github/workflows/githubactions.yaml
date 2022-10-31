@@ -10,7 +10,7 @@ on:
 jobs:
   Maven-java-Build:
 
-    runs-on : my-runner
+    runs-on : self-hosted
     
     # defaults:
     #   run:
