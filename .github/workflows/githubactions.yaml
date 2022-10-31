@@ -47,7 +47,7 @@ jobs:
 
     - name : Running python script as file
       run : |
-            python3 /home/pythonscript.py
+            python /home/pythonscript.py
       shell : python
 
     - name: Install_git
