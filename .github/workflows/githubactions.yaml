@@ -36,7 +36,7 @@ jobs:
             echo "Who triggered it : ${GITHUB_ACTOR}"
             echo "Owner : ${GITHUB_REPOSITORY_OWNER}"
             echo "Commit id : ${GITHUB_SHA}"
-            echo "Server : {GITHUB_SERVER_URL}"  
+            echo "Server : ${GITHUB_SERVER_URL}"  
       
     - name : Printing name 
       run : echo "My name is $name"
@@ -87,7 +87,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: myArtifacts
-        path : ~/home/ubuntu/workingdirectory/java-hello-world-with-maven/java-hello-world-with-maven
+        path : /home/ubuntu/actions-runner/~/home/ubuntu/workingdirectory/java-hello-world-with-maven/java-hello-world-with-maven
         # retention-days: 1
     
     - name: Create dir
