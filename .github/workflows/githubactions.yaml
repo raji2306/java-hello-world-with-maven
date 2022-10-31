@@ -48,7 +48,6 @@ jobs:
     - name : Running python script as file
       run : |
             python /home/pythonscript.py
-      shell : python
 
     - name: Install_git
       id : contents
