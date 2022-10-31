@@ -47,8 +47,7 @@ jobs:
 
     - name : Running python script as file
       run : |
-            chmod +x /home/pythonscript.py
-            ./home/pythonscript.py
+            python3 /home/pythonscript.py
       shell : python
 
     - name: Install_git
