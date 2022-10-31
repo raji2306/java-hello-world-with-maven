@@ -37,7 +37,24 @@ jobs:
             echo "Owner : ${GITHUB_REPOSITORY_OWNER}"
             echo "Commit id : ${GITHUB_SHA}"
             echo "Server : ${GITHUB_SERVER_URL}"  
-      
+            
+    - name : Access context 
+      run : |
+            echo " Repo url : ${{ github.repositoryUrl }} "
+            echo " Retention days : ${{ github.retention_days	}}"
+            echo " Env value : ${{ env.name }} "
+            echo " Job : ${{ toJSON(job) }} "
+            echo " Steps outputs : ${{ steps.contents.outputs }}"
+            echo " Runner Os and name : ${{ runner.name }} ${{ runner.os }}"
+            echo " Secret : ${{ secrets.DOCKER_USERNAME }}"
+            echo " Matrix : ${{ matrix.version }}"
+            echo " Job outputs : ${{ needs.Maven-java-Build.outputs }}"
+            
+    - name : Check Job status 
+      if : ${{ job.status == 'success' }}
+      run : 
+        echo "success"
+            
     - name : Printing name 
       run : echo "My name is $name"
 
