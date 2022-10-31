@@ -10,7 +10,7 @@ on:
 jobs:
   Maven-java-Build:
 
-    runs-on : self-hosted
+    runs-on : my-runner
     
     # defaults:
     #   run:
@@ -39,6 +39,16 @@ jobs:
 
     - name: Check Maven version
       run: mvn -version
+      
+    - name : Installing python 
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name : Running python script as file
+      run : |
+            python ~/pythonscript.py
+      shell : python
 
     - name: Install_git
       id : contents
