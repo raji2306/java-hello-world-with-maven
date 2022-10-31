@@ -48,7 +48,7 @@ jobs:
             echo " Runner Os and name : ${{ runner.name }} ${{ runner.os }}"
             echo " Secret : ${{ secrets.DOCKER_USERNAME }}"
             echo " Matrix : ${{ matrix.version }}"
-            echo " Job outputs : ${{ needs.Maven-java-Build.outputs }}"
+            echo " Job outputs :  ${{ github.job }}"
             
     - name : Check Job status 
       if : ${{ job.status == 'success' }}
