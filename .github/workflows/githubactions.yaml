@@ -104,14 +104,9 @@ jobs:
 
     needs: Maven-java-Build
     
-    env :
-      name : Rajesh-preetha
-    
     steps:
       - name : Displayin Git Value
         run: echo ${{needs.Maven-java-Build.outputs.output1}} 
-      - name : Display name
-        run : echo "pair $name"
         
 #   Resuable-Workflow:
   
