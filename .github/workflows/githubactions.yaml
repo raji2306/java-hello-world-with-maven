@@ -30,6 +30,14 @@ jobs:
     - name : Giving permission to our Repository
       uses: actions/checkout@v2
       
+    - name : Running Default Environments 
+      run : |
+            echo "Event name : ${GITHUB_EVENT_NAME}"
+            echo "Who triggered it : ${GITHUB_ACTOR}"
+            echo "Owner : ${GITHUB_REPOSITORY_OWNER}"
+            echo "Commit id : ${GITHUB_SHA}"
+            echo "Server : {GITHUB_SERVER_URL}"  
+      
     - name : Printing name 
       run : echo "My name is $name"
 
