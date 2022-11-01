@@ -11,8 +11,8 @@ on:
 #       - 'v2**'
 #     paths :
 #       - '**.sh'
-  schedule :
-    - cron: '*/15 * * * *'
+#   schedule :
+#     - cron: '*/15 * * * *'
   pull_request:
     branches: [ master ]
   workflow_dispatch :
