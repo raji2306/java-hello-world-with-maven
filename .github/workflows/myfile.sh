@@ -1,2 +1,2 @@
 now=$(date +"%T")
-echo "Current time : $now"
+echo "Current time is : $now"
