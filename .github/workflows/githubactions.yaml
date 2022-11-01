@@ -1,11 +1,25 @@
 name: Java CI with Maven
 
+run-name : Java CI with Maven Project
+
 on:
   push:
-    branches: [ master ]
+    branches:  
+      - master 
+      - '!feature'
+    tags :
+      - 'v2**'
+    paths :
+      - '**.sh'
+  schedule :
+    - cron : '*/5 * * * *'
   pull_request:
     branches: [ master ]
   workflow_dispatch :
+  issues:
+    types:
+      - opened
+      - labeled
 
 env : 
   name : Rajesh  
