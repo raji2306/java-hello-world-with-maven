@@ -7,10 +7,10 @@ on:
     branches:  
       - master 
       - '!feature'
-#     tags :
-#       - 'v2**'
-    paths :
-      - '**.sh'
+    tags :
+      - 'v2**'
+#     paths :
+#       - '**.sh'
 #   schedule :
 #     - cron : '*/5 * * * *'
   pull_request:
