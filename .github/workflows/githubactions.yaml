@@ -160,6 +160,8 @@ jobs:
         
   Resuable-Workflow:
   
+      needs: Maven-java-Build
+    
       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
       with :
         image : resuableimage
