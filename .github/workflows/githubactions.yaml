@@ -158,7 +158,7 @@ jobs:
       - name : Displayin Git Value
         run: |
               echo ${{needs.Maven-java-Build.outputs.output1}} 
-              echo ${{needs.conty.outputs.output2}}
+              echo ${{needs.Maven-java-Build.outputs.output2}}
         
 #   Resuable-Workflow:
   
