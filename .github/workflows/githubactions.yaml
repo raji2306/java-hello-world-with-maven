@@ -7,12 +7,12 @@ on:
     branches:  
       - master 
       - '!feature'
-    tags :
-      - 'v2**'
-    paths :
-      - '**.sh'
-  schedule :
-    - cron : '*/5 * * * *'
+#     tags :
+#       - 'v2**'
+#     paths :
+#       - '**.sh'
+#   schedule :
+#     - cron : '*/5 * * * *'
   pull_request:
     branches: [ master ]
   workflow_dispatch :
