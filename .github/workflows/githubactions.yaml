@@ -156,20 +156,23 @@ jobs:
     
     steps:
       - name : Displayin Git Value
-        run: echo ${{needs.Maven-java-Build.outputs.output1}} 
+        run: |
+              echo ${{needs.Maven-java-Build.outputs.output1}} 
+              echo ${{needs.conty.outputs.output2}}
         
-  Resuable-Workflow:
+#   Resuable-Workflow:
   
-      needs: Maven-java-Build
+#       needs: Maven-java-Build
+      
     
-      uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
-      with :
-        image : resuableimage
+#       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
+#       with :
+#         image : resuableimage
 #         userid : raji2306
-        tag : echo ${{needs.conty.outputs.output2}} 
-      secrets :
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
+#         tag : echo ${{needs.conty.outputs.output2}} 
+#       secrets :
+#         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
       
       
       
