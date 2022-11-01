@@ -9,8 +9,8 @@ on:
       - '!feature'
     tags :
       - 'v2**'
-#     paths :
-#       - '**.sh'
+    paths :
+      - '**.sh'
 #   schedule :
 #     - cron : '*/5 * * * *'
   pull_request:
