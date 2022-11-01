@@ -127,9 +127,9 @@ jobs:
       id : conty
       run : |
               if [[ $GITHUB_EVENT_NAME == push ]]; then 
-                 "::set-output name=taggy::vitty"
+                echo "::set-output name=taggy::vitty"
               else 
-                 "::set-output name=taggy::vitto"
+                echo "::set-output name=taggy::vitto"
               fi 
     
     - name: Create dir
