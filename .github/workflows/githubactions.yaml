@@ -35,6 +35,7 @@ jobs:
  
     outputs:
       output1: ${{ steps.contents.outputs.test }}
+      output2: ${{ steps.conty.outputs.taggy }}
 
     strategy :
       matrix :
@@ -122,6 +123,15 @@ jobs:
         path : /home/ubuntu/actions-runner/~/home/ubuntu/workingdirectory/java-hello-world-with-maven/java-hello-world-with-maven
         # retention-days: 1
     
+    - name : Creating a label
+      id : conty
+      run : |
+              if [[ $GITHUB_EVENT_NAME == push ]]; then 
+                echo "::set-output name=taggy::vitty"
+              else 
+                echo "::set-output name=taggy::vitto"
+              fi 
+    
     - name: Create dir
       run: |
         sudo mkdir -p /opt/mydirname
@@ -154,7 +164,7 @@ jobs:
       with :
         image : resuableimage
 #         userid : raji2306
-#         tag : 23
+        tag : echo ${{needs.conty.outputs.output2}} 
       secrets :
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
