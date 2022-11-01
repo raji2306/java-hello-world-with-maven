@@ -168,7 +168,7 @@ jobs:
       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
       with :
         image : resuableimage
-        userid : raji2306
+#         userid : raji2306
         tag : echo ${{needs.Maven-java-Build.outputs.output2}}
       secrets :
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
