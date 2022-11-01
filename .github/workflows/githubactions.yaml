@@ -164,7 +164,7 @@ jobs:
       with :
         image : resuableimage
 #         userid : raji2306
-        tag : echo ${{needs.conty.outputs.output2}} 
+        tag : ${{needs.conty.outputs.output2}} 
       secrets :
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
