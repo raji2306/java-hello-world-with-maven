@@ -51,7 +51,7 @@ jobs:
             echo "Owner : ${GITHUB_REPOSITORY_OWNER}"
             echo "Commit id : ${GITHUB_SHA}"
             echo "Server : ${GITHUB_SERVER_URL}"  
-            echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}"
+            echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`"
             
     - name : Access context 
       run : |
