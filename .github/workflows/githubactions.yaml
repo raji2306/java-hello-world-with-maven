@@ -160,19 +160,19 @@ jobs:
               echo ${{needs.Maven-java-Build.outputs.output1}} 
               
         
-  Resuable-Workflow:
+#   Resuable-Workflow:
   
-      needs: Maven-java-Build
+#       needs: Maven-java-Build
       
     
-      uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
-      with :
-        image : resuableimage
+#       uses : raji2306/Thoughtworks-mediawikiApplcation/.github/workflows/resuable.yaml@master
+#       with :
+#         image : resuableimage
 #         userid : raji2306
-        tag :  ${{needs.Maven-java-Build.outputs.output2}}
-      secrets :
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
+#         tag :  ${{needs.Maven-java-Build.outputs.output2}}
+#       secrets :
+#         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
       
       
       
