@@ -25,7 +25,7 @@ on:
 
 concurrency :
   group: con-group 
-  cancel-in-progress: true
+#   cancel-in-progress: true
 
 env : 
   name : Rajesh  
