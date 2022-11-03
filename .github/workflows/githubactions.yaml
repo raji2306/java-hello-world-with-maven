@@ -2,11 +2,13 @@ name: Java CI with Maven
 
 run-name : Java CI with Maven Project
 
+#Concurrency Testing 
+
 on:
-  push:
-    branches:  
-      - master 
-      - '!feature'
+#   push:
+#     branches:  
+#       - master 
+#       - '!feature'
 #     tags :
 #       - 'v2**'
 #     paths :
@@ -16,10 +18,14 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch :
-  issues:
-    types:
-      - opened
-      - labeled
+#   issues:
+#     types:
+#       - opened
+#       - labeled
+
+concurrency :
+  group: con-group 
+  cancel-in-progress: true
 
 env : 
   name : Rajesh  
@@ -44,6 +50,12 @@ jobs:
     steps:
     - name : Giving permission to our Repository
       uses: actions/checkout@v2
+      
+    - name : Running sleep command to test concurrency 
+      run : | 
+            echo " Sleep command started running "
+            sleep 5m
+            echo " Sleep command finished "
       
     - name : Running Default Environments 
       run : |
@@ -123,14 +135,14 @@ jobs:
         path : /home/ubuntu/actions-runner/~/home/ubuntu/workingdirectory/java-hello-world-with-maven/java-hello-world-with-maven
         # retention-days: 1
     
-    - name : Creating a label
-      id : conty
-      run : |
-              if [[ $GITHUB_EVENT_NAME == boom ]]; then 
-                echo "::set-output name=taggy::vitty"
-              else 
-                echo "::set-output name=taggy::vitto"
-              fi 
+#     - name : Creating a label
+#       id : conty
+#       run : |
+#               if [[ $GITHUB_EVENT_NAME == boom ]]; then 
+#                 echo "::set-output name=taggy::vitty"
+#               else 
+#                 echo "::set-output name=taggy::vitto"
+#               fi 
     
     - name: Create dir
       run: |
@@ -148,16 +160,16 @@ jobs:
 #     - name: copy file via ssh password
 #       run : sudo sshpass -p '${{ secrets.PASSWORD }}' scp /root/myfile.txt root@3.110.104.77:/root    
 
-  Output-Testing:
+#   Output-Testing:
 
-    runs-on : self-hosted
+#     runs-on : self-hosted
 
-    needs: Maven-java-Build
+#     needs: Maven-java-Build
     
-    steps:
-      - name : Displayin Git Value
-        run: |
-              echo ${{needs.Maven-java-Build.outputs.output1}} 
+#     steps:
+#       - name : Displayin Git Value
+#         run: |
+#               echo ${{needs.Maven-java-Build.outputs.output1}} 
               
         
 #   Resuable-Workflow:
