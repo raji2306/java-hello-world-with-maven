@@ -24,9 +24,9 @@ on:
 #       - labeled
 
 concurrency :
-  group: con-group 
+  group: ${{ github.ref }}
   cancel-in-progress: true
-
+  
 env : 
   name : Rajesh  
   
