@@ -166,12 +166,13 @@ jobs:
       group: ${{ github.ref }}
       cancel-in-progress: true
       
-    needs: Maven-java-Build
+#     needs: Maven-java-Build
     
     steps:
       - name : Displayin Git Value
         run: |
              echo ${{ github.ref }}
+#         echo ${{needs.Maven-java-Build.outputs.output1}} 
               
         
 #   Resuable-Workflow:
