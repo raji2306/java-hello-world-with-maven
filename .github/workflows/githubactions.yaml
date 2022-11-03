@@ -5,10 +5,10 @@ run-name : Java CI with Maven Project
 #Concurrency Testing 
 
 on:
-  push:
-    branches:  
-      - master 
-      - '!feature'
+#   push:
+#     branches:  
+#       - master 
+#       - '!feature'
 #     tags :
 #       - 'v2**'
 #     paths :
