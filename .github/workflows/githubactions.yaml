@@ -56,6 +56,7 @@ jobs:
             echo " Sleep command started running "
             sleep 5m
             echo " Sleep command finished "
+            echo ${{ github.ref }}
       
     - name : Running Default Environments 
       run : |
