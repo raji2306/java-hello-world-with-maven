@@ -5,14 +5,14 @@ run-name : Java CI with Maven Project
 #Concurrency Testing 
 
 on:
-#   push:
-#     branches:  
-#       - master 
-#       - '!feature'
-#     tags :
-#       - 'v2**'
-#     paths :
-#       - '**.sh'
+  push:
+    branches:  
+      - master 
+      - '!feature'
+    tags :
+      - 'v2**'
+    paths :
+      - '**.sh'
 #   schedule :
 #     - cron: '*/15 * * * *'
   pull_request:
@@ -23,6 +23,9 @@ on:
 #       - opened
 #       - labeled
 
+concurrency :
+         group: ${{ github.ref }}
+         cancel-in-progress: true
   
 env : 
   name : Rajesh  
@@ -161,15 +164,12 @@ jobs:
   Output-Testing:
 
     runs-on : self-hosted
-
-    concurrency :
-      group: ${{ github.ref }}
-      cancel-in-progress: true
       
 #     needs: Maven-java-Build
     
     steps:
       - name : Displayin Git Value
+        id : git
         run: |
              echo ${{ github.ref }}
 #         echo ${{needs.Maven-java-Build.outputs.output1}} 
