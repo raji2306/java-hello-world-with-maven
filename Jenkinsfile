@@ -20,7 +20,7 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-//         stage("Deploy to Tomcat Server"){
+//   .      stage("Deploy to Tomcat Server"){
 //             steps{
 //                 script{
 //                     deploy adapters: [tomcat9(credentialsId:'Tomcat-user', path:'',url:'http://13.232.82.57:8080')],contextPath:'/pipeline', onFailure: false, war: '**/*.war'
