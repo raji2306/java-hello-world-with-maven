@@ -32,31 +32,31 @@ pipeline {
 //                 ansiblePlaybook credentialsId: 'ansible-play', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: '/etc/ansible/tomcat.yaml'
 //             }    
 //         }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-    stage('Running the container') {
-      steps{
-        sh "docker run -itd --name jenkinsdockercontainer -p 85:80 $registry:$BUILD_NUMBER"
-      }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
-  }
-}
+//     stage('Building image') {
+//       steps{
+//         script {
+//           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+//         }
+//       }
+//     }
+//     stage('Deploy Image') {
+//       steps{
+//         script {
+//           docker.withRegistry( '', registryCredential ) {
+//             dockerImage.push()
+//           }
+//         }
+//       }
+//     }
+//     stage('Running the container') {
+//       steps{
+//         sh "docker run -itd --name jenkinsdockercontainer -p 85:80 $registry:$BUILD_NUMBER"
+//       }
+//     }
+//     stage('Remove Unused docker image') {
+//       steps{
+//         sh "docker rmi $registry:$BUILD_NUMBER"
+//       }
+//     }
+//   }
+ }
