@@ -133,7 +133,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: myArtifacts
-        path : /home/ubuntu/actions-runner/~/home/ubuntu/workingdirectory/java-hello-world-with-maven/java-hello-world-with-maven
+        path : ~/java-hello-world-with-maven
         # retention-days: 1
     
 #     - name : Creating a label
