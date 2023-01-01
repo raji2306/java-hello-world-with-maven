@@ -51,12 +51,12 @@ jobs:
     - name : Giving permission to our Repository
       uses: actions/checkout@v2
       
-    - name : Running sleep command to test concurrency 
-      run : | 
-            echo " Sleep command started running "
-            sleep 5m
-            echo " Sleep command finished "
-            echo ${{ github.ref }}
+#     - name : Running sleep command to test concurrency 
+#       run : | 
+#             echo " Sleep command started running "
+#             sleep 5m
+#             echo " Sleep command finished "
+#             echo ${{ github.ref }}
       
     - name : Running Default Environments 
       run : |
@@ -105,9 +105,9 @@ jobs:
       with:
         python-version: '3.10' 
 
-    - name : Running python script as file
-      run : |
-            python /home/pythonscript.py
+#     - name : Running python script as file
+#       run : |
+#             python /home/pythonscript.py
 
     - name: Install_git
       id : contents
