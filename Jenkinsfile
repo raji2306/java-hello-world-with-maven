@@ -12,7 +12,7 @@ pipeline {
    stages{
        stage("GitHub Checkout Stage"){
            steps{
-               git credentialsId:'Git-ssh', url: 'git@github.com:raji2306/java-hello-world-with-maven.git'
+               git credentialsId:'ubuntu', url: 'git@github.com:raji2306/java-hello-world-with-maven.git'
           }
         }
         stage("Maven Build Stage"){
@@ -20,13 +20,13 @@ pipeline {
                 sh 'mvn package'
             }
         }
-      stage("Deploy to Tomcat Server"){
-            steps{
-                script{
-                    deploy adapters: [tomcat9(credentialsId:'Tomcat', path:'',url:'http://15.207.115.59:8080')],contextPath:'/pipeline', onFailure: false, war: '**/sample.war'
-               }
-            }
-        }
+//       stage("Deploy to Tomcat Server"){
+//             steps{
+//                 script{
+//                     deploy adapters: [tomcat9(credentialsId:'Tomcat', path:'',url:'http://15.207.115.59:8080')],contextPath:'/pipeline', onFailure: false, war: '**/sample.war'
+//                }
+//             }
+//         }
 //         stage("Running Ansible Playbook"){
 //             steps{
 //                 ansiblePlaybook credentialsId: 'ansible-play', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: '/etc/ansible/tomcat.yaml'
