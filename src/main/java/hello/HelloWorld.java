@@ -6,6 +6,7 @@ import com.rollbar.notifier.Rollbar;
 
 public class HelloWorld {
     public static void main(String[] args) {
+     try {
       LocalTime currentTime = new LocalTime();
 		  System.out.println("The current local time is: " + currentTime);
 
@@ -15,6 +16,11 @@ public class HelloWorld {
     Rollbar rollbar = Rollbar.init(withAccessToken("f14a1ad6e0e644009d456897cfab76ac").build());
     rollbar.log("Hello, Rollbar");
     rollbar.close(true);
+     }
+	    
+    catch ( Exception e ) {
+	system.out.println( s: "error" );
+    }
 	    
     }
 }
