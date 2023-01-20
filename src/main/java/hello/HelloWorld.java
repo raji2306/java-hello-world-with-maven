@@ -16,11 +16,9 @@ public class HelloWorld {
     Rollbar rollbar = Rollbar.init(withAccessToken("f14a1ad6e0e644009d456897cfab76ac").build());
     rollbar.log("Hello, Rollbar");
     rollbar.close(true);
-     }
-	    
-    catch ( Exception e ) {
-	system.out.println( s: "error" );
-    }
-	    
+     }    
+    catch (Exception e) {
+	system.out.println("error");
+    }    
     }
 }
